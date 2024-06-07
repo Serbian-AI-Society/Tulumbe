@@ -10,15 +10,15 @@ Welcome to TulumbeGPT, a personalized movie recommendation chatbot built using O
 ## Setup
 
 You can run the application localy:
-1. Install all requred packages by running `pip install -r requirenments.txt` 
+1. Install all requred packages by running `pip install -r requirements.txt` 
 2. Run the application by typing `streamlit run .\app.py`
 
 Or checkout our deployed version on https://tulumbegpt-baxwfyzzyudepqm5usdy4a.streamlit.app/
 
 
 ## Authors
-* [Hristina Adamović]()
-* [Selena Milutin]()
+* [Hristina Adamović](https://github.com/hristinaina)
+* [Selena Milutin](https://github.com/SelenaMilutin)
 
 
 ## Project status
