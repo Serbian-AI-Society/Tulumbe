@@ -1,2 +1,1 @@
 # Tulumbe
-streamlit hello

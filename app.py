@@ -14,17 +14,19 @@ load_dotenv()
 openai.api_key = openai_key
 
 # Streamlit app title
-st.title("ChatGPT Chatbot")
+st.title("FilmoBot")
 
 # Instructions
-st.write("Ask me anything!")
+st.write("Nisi siguran koji film da gledaš? Ili si već pogledao sve i ne znaš šta dalje? "
+         "Na pravom si mestu! Opiši kako se osećaš ili kakvo osećanje želiš da film probudi u tebi,"
+         " a ja ću se potruditi da ti preporučim savršen film!")
 
 # Chat history
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
 
 # Text input box for user prompt
-user_input = st.chat_input("Postavi pitanje vezano za filmove...")
+user_input = st.chat_input("Kakav film želiš da gledaš?")
 
 # Handle user input and generate responses
 if user_input:
