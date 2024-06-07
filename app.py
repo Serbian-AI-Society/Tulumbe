@@ -14,7 +14,7 @@ load_dotenv()
 openai.api_key = openai_key
 
 # Streamlit app title
-st.title("FilmoBot")
+st.title("TulumbeGPT")
 
 # Instructions
 st.write("Nisi siguran koji film da gledaš? Ili si već pogledao sve i ne znaš šta dalje? "
