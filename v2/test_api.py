@@ -6,7 +6,8 @@ import openai
 from openai import APIError
 from prompts import SYSTEM_PROMPT
 
-def test_api(conversation, model: str = "gpt-3.5-turbo"):
+
+def test_api(st, conversation, model: str = "gpt-3.5-turbo"):
     client = openai
 
     # Assuming OpenAI API key is set elsewhere
@@ -14,20 +15,17 @@ def test_api(conversation, model: str = "gpt-3.5-turbo"):
         raise ValueError("OpenAI API key not found in environment variables")
 
     try:
-        nana = (f"ovo u uglastim zagradama su prethodni upiti: "
-                f"{str(conversation[:-1])} {SYSTEM_PROMPT} '''{conversation[-1]['content']}'''")
-        # Generate a response using the LLM and return it
-        print(nana)
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "user", "content": nana}
-            ]
-        )
-        # Extract the message content from the response
-        print("ODGOVOR", response)
-        response_text = response.choices[0].message.content.strip().lower()
-        return response_text
+        with st.chat_message("assistant"):
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "user", "content": f"{SYSTEM_PROMPT}. \n These are the previous prompts: f{conversation[:-1]}. \n This is the current client's prompt:" + conversation[-1]["content"]}
+                ]
+            )
+            # Extract the message content from the response
+            print("RESPONSE", response)
+            response_text = response.choices[0].message.content.strip()
+            return response_text
 
     except APIError as e:
         print(f"Error generating response: {e}")

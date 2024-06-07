@@ -32,7 +32,7 @@ if user_input:
     st.session_state['chat_history'].append({"role": "user", "content": user_input})
 
     # Generate a response using the LLM and store it
-    response = test_api(st.session_state['chat_history'])
+    response = test_api(st, st.session_state['chat_history'])
     st.session_state['chat_history'].append({"role": "assistant", "content": response})
 
 # Display all chat messages stored in the session state
