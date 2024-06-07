@@ -1,0 +1,23 @@
+# Python
+*.pyc
+__pycache__/
+.pytest_cache/
+.pyre/
+
+# Virtual Environment
+venv/
+env/
+env3/
+.venv/
+
+# Visual Studio Code
+.vscode/
+.vscode/
+
+# Other
+node_modules/
+.idea/
+
+data/
+
+Microsoft/
