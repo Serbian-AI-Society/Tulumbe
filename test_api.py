@@ -1,7 +1,6 @@
 import os
 import sys
 
-sys.path.append('../')
 import openai
 from openai import APIError
 from prompts import SYSTEM_PROMPT

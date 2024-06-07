@@ -3,7 +3,6 @@ import openai
 import os
 from dotenv import load_dotenv
 import sys
-sys.path.append('../')
 from config import openai_key
 from test_api import test_api
 
