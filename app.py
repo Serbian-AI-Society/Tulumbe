@@ -11,7 +11,7 @@ from test_api import test_api
 load_dotenv()
 
 # Set your OpenAI API key here
-openai.api_key = openai_key
+openai.api_key = os.getenv('API_KEY')
 
 # Streamlit app title
 st.title("TulumbeGPT")
