@@ -1,8 +1,10 @@
 import os
+import sys
 
+sys.path.append('../')
 import openai
 from openai import APIError
-
+from prompts import SYSTEM_PROMPT
 
 def test_api(conversation, model: str = "gpt-3.5-turbo"):
     client = openai
@@ -12,7 +14,8 @@ def test_api(conversation, model: str = "gpt-3.5-turbo"):
         raise ValueError("OpenAI API key not found in environment variables")
 
     try:
-        nana = "ovo u uglastin zagradama su predhodni upiti: " + str(conversation[:-1]) + "  ovo je poslednji korisnikov upit: " + conversation[-1]['content']
+        nana = (f"ovo u uglastim zagradama su prethodni upiti: "
+                f"{str(conversation[:-1])} {SYSTEM_PROMPT} '''{conversation[-1]['content']}'''")
         # Generate a response using the LLM and return it
         print(nana)
         response = client.chat.completions.create(

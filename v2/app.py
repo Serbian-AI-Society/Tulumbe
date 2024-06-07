@@ -2,9 +2,11 @@ import streamlit as st
 import openai
 import os
 from dotenv import load_dotenv
-
+import sys
+sys.path.append('../')
 from config import openai_key
 from test_api import test_api
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -23,7 +25,7 @@ if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
 
 # Text input box for user prompt
-user_input = st.text_input("You:", "")
+user_input = st.chat_input("Postavi pitanje vezano za filmove...")
 
 # Handle user input and generate responses
 if user_input:
