@@ -1,9 +1,7 @@
-import os
-import sys
-
 import openai
 from openai import APIError
 from prompts import SYSTEM_PROMPT
+import os
 
 
 def test_api(st, conversation, model: str = "gpt-3.5-turbo"):
@@ -15,18 +13,19 @@ def test_api(st, conversation, model: str = "gpt-3.5-turbo"):
 
     try:
         with st.chat_message("assistant"):
-            response = client.chat.completions.create(
+            # Initiate the streaming response
+            response_stream = client.chat.completions.create(
                 model=model,
                 messages=[
-                    {"role": "user", "content": f"{SYSTEM_PROMPT}. \n These are the previous prompts: f{conversation[:-1]}. \n This is the current client's prompt:" + conversation[-1]["content"]}
-                ]
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    *conversation
+                ],
+                stream=True
             )
-            # Extract the message content from the response
-            print("RESPONSE", response)
-            response_text = response.choices[0].message.content.strip()
-            return response_text
+
+            response = st.write_stream(response_stream)
+            return response
 
     except APIError as e:
         print(f"Error generating response: {e}")
         return "Sorry, there was an error generating the response."
-
