@@ -10,9 +10,10 @@ load_dotenv()
 # Set your OpenAI API key here
 openai.api_key = os.environ['OPENAI_API_KEY']
 
+logo_path = "images/logo3.png"
 # Streamlit app title
-st.set_page_config(page_title="TulumbeGPT", page_icon="images/logo.png")
-st.image("images/logo.png", width=100)
+st.set_page_config(page_title="TulumbeGPT", page_icon=logo_path)
+st.image(logo_path, width=100)
 st.title("TulumbeGPT")
 
 # Instructions
